@@ -1,286 +1,316 @@
 <p align="center">
-  <a href="https://minimal-blog.lekoarts.de">
-    <img alt="LekoArts" src="https://img.lekoarts.de/gatsby/gatsby-site-illustration.png" />
+  <a href="https://www.gatsbyjs.com">
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby Starter: Minimal Blog
+  Gatsby Starter Landing Page
 </h1>
 
-<p align="center">
-  <a href="https://github.com/LekoArts/gatsby-starter-minimal-blog/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-0BSD-blue.svg" alt="Minimal Blog is released under the 0BSD license." />
-  </a>
-  <a href="https://github.com/sponsors/LekoArts">
-    <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/LekoArts">
-  </a>
-  <a href="https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter">
-    <img alt="Website" src="https://img.shields.io/badge/-website-blue">
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=lekoarts_de">
-    <img src="https://img.shields.io/twitter/follow/lekoarts_de.svg?label=Follow%20@lekoarts_de" alt="Follow @lekoarts_de" />
-  </a>
-</p>
+Create custom landing pages using Gatsby and Contentful with this starter-theme combo.
+This starter demonstrates how to use Contentful to build dynamic and customizable landing pages with Gatsby and can serve as a starting-point for creating your own custom landing page components that match your visual brand.
 
-Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting. Using the Gatsby Theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog).
+[View the Demo][demo]
 
-[**Demo Website**](https://minimal-blog.lekoarts.de)
+[demo]: https://landingpagestarter.gatsbyjs.com/
 
-Also be sure to check out other [Free & Open Source Gatsby Themes](https://themes.lekoarts.de) and my [Personal Website](https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter).
+## Quick start
 
-## ✨ Features
+### Prerequisites
 
-- MDX
-- Fully customizable through the usage of Gatsby Themes (and Theme UI)
-- Light Mode / Dark Mode
-- Typography driven, minimal style
-- Tags/Categories support
-- Code highlighting with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) support. Also allows adding line numbers, line highlighting, language tabs, and file titles.
-- RSS Feed for blog posts
-- SEO (Sitemap, OpenGraph tags, Twitter tags)
-- WebApp Manifest
+You will need a [new or existing Contentful space](https://www.contentful.com/help/contentful-101/#step-2-create-a-space) to use this Starter. During installation, you will be asked for the following:
 
-## 🚀 Getting Started
+- Contentful Space ID
+  - [Directions to find your Space ID](https://www.contentful.com/help/find-space-id/)
+- Contentful Management API Token
+  - [Directions to generate a Personal Access Token](https://www.contentful.com/faq/personal-access-tokens/)
+- Contentful Delivery API Key and (optional) Preview API Key
+  - In your Contentful space, go to Settings > API Keys.
+  - On the Content delivery / preview tokens tab, click the Add API Key button.
+  - Give the API Key an appropriate name and description.
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/LekoArts/gatsby-starter-minimal-blog)
+When you have these available, you will be ready to begin installation
 
-### 1. **Create a Gatsby site.**
+### Installation
 
-Use `git` to clone the site and navigate into it:
+1. **Create a Gatsby site**
 
-```sh
-git clone https://github.com/LekoArts/gatsby-starter-minimal-blog project-name
-cd project-name
+   Use the Gatsby CLI to get started locally:
+
+   ```sh
+   npx gatsby new my-landing-page-site https://github.com/gatsbyjs/gatsby-starter-landing-page
+   ```
+
+2. **Run the Contentful setup command**
+   From your site's root directory, run the following command:
+
+   ```sh
+   cd my-landing-page-site
+   yarn setup
+   ```
+
+   This will run the Contentful setup script. The script requests your Contentful Space ID, Management Token, and Delivery/Preview API Keys, sets up your local environment variables, and imports the Landing Page content model and demo data to your Contentful space.
+
+   Your Contentful space will now contain the content model used by the starter, along with demo content that demonstrates how to use the various content types and landing page components.
+
+3. **Start developing**
+
+   Navigate to your new site's directory and start the development server.
+   **Note:** this starter uses Yarn Workspaces and requires Yarn for development.
+
+   ```sh
+   yarn && yarn start
+   ```
+
+4. **Open the source code and start editing!**
+
+   Your site should now be running at <http://localhost:8000>
+
+## Deployment
+
+Once your content model and data are available in Contentful, deploy your site to [Gatsby Cloud](https://gatsbyjs.com/products/cloud):
+
+[<img src="https://www.gatsbyjs.com/deploynow.png" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-landing-page)
+
+## What's inside?
+
+A quick look at the files and directories included in this project:
+
+```
+.
+├── README.md
+├── gatsby-config.js
+├── gatsby-node.js
+├── gatsby-theme-landing-page
+│   ├── README.md
+│   ├── gatsby-config.js
+│   ├── index.js
+│   └── src
+│       ├── components
+│       ├── pages
+│       ├── sections
+│       └── styles
+├── src
+│   ├── components
+│   ├── gatsby-theme-landing-page
+│   └── styles.css
+└── .env.example
 ```
 
-### 2. **Install dependencies.**
+1. **`gatsby-config.js`**: [Gatsby config][] file for the starter, which includes `gatsby-theme-landing-page` as a plugin.
+1. **`gatsby-node.js`**: [Gatsby Node][] config file for the starter, which includes GraphQL type definitions for the Contentful content model.
+1. **`gatsby-theme-landing-page`**: The [theme][theme docs] that includes the Contentful source plugin and most of the functionality. See the theme's [`README.md`][theme readme] for more information.
+1. **`src/`**: The source directory for the starter. This includes an example of using the [Shadowing API][] to customize landing pages provided by the theme.
 
-If you use npm 7 or above use the `--legacy-peer-deps` flag. If you use npm 6 you can use `npm install`.
+[gatsby config]: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+[gatsby node]: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
+[theme docs]: https://www.gatsbyjs.com/docs/themes/
+[shadowing api]: https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/
 
-```sh
-npm install --legacy-peer-deps
+### Detailed look into the theme
+
+```
+├── gatsby-theme-landing-page
+│   ├── gatsby-config.js
+│   ├── index.js
+│   └── src
+│       ├── components
+│       ├── pages
+│       ├── sections
+│       └── styles
 ```
 
-### 3. **Open the code and start customizing!**
+This starter uses `gatsby-theme-landing-page` to source content from Contentful and create block-based landing pages.
+The theme is included in this repo's Yarn Workspace for local development.
 
-Start the site by running `npm run develop`.
+1. **`src/sections`**: Each landing page in Contentful determines which components it uses and controls the order of these sections.
+   The components rendered by the theme are in `src/sections`. Each component in this directory represents one Contentful `LandingPageSection` node.
+1. **`src/components`**: This directory includes shared components, such as buttons, links, head, and other utilities.
+1. **`src/styles`**: This directory includes base styles and CSS custom properties.
+1. **`src/pages`**: This includes one [File System Routing][] page for rendering each landing page.
+1. **`index.js`**: Exports components that can be used independently from the theme.
 
-Your site is now running at `http://localhost:8000`!
+[file system routing]: https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
 
-If you want to learn more about how you can use a Gatsby starter that is configured with a Gatsby theme, you can check out this [shorter](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/using-a-gatsby-theme/) or [longer](https://www.gatsbyjs.com/tutorial/using-a-theme/) tutorial. The tutorials don't exactly apply to this starter however the concepts are the same.
+### Theme updates
 
-## 📝 Using and modifying this starter
+You can choose to either leave this directory in your site, or remove it to install and use the published version of the theme from npm.
+If you install the theme from npm, your site can receive upstream updates and bug fixes in the future.
 
-**Important Note:** Please read the guide [Shadowing in Gatsby Themes](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) to understand how to customize the underlying theme!
+## Installing the theme in an existing site
 
-This starter creates a new Gatsby site that installs and configures the theme [`@lekoarts/gatsby-theme-minimal-blog`](https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-minimal-blog).
+Because this starter is built with a Gatsby theme, you can leverage its functionality in an existing site without cloning this starter.
+For more information, see the theme's [README.md][theme readme].
 
-Have a look at the theme's README and files to see what options are available and how you can shadow the various components including Theme UI. Generally speaking you will want to place your files into `src/@lekoarts/gatsby-theme-minimal-blog/` to shadow/override files. The Theme UI config can be configured by shadowing its files in `src/gatsby-plugin-theme-ui/`.
+## Adding a layout
 
-### Code Highlighting
-
-Since the underlying theme ships with [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) and [react-live](https://github.com/FormidableLabs/react-live) certain additional features were added to code blocks. You can find an overview / usage example in the [example repository](https://github.com/LekoArts/gatsby-themes/tree/main/examples/minimal-blog/content/posts/fantastic-beasts-and-where-to-find-them/index.mdx)! If you want to change certain code styles or add additional language tabs, you need to shadow the file `src/@lekoarts/gatsby-theme-minimal-blog/styles/code.js`.
-
-**Language tabs:**
-
-When you add a language (such as e.g. `js` or `javascript`) to the code block, a little tab will appear at the top left corner.
-
-````
-```js
-// code goes here
-```
-````
-
-**Code titles:**
-
-You can display a title (e.g. the file path) above the code block.
-
-````
-```jsx:title=your-title
-// code goes here
-```
-````
-
-Or without a specific language:
-
-````
-```:title=your-title
-// code goes here
-```
-````
-
-**Line highlighting:**
-
-You can highlight single or multiple (or both) lines in a code block. You need to add a language.
-
-````
-```js {2,4-5}
-const test = 3
-const foo = 'bar'
-const harry = 'potter'
-const hermione = 'granger'
-const ron = 'weasley'
-```
-````
-
-**Hide line numbers:**
-
-If you want to hide line numbers you can either globally disable them (see Theme options) or on a block-by-block basis. You can also combine that with the other attributes.
-
-````
-```noLineNumbers
-// code goes here
-```
-````
-
-**react-live:**
-
-Add `react-live` to the code block (and render the component) to see a preview below it.
-
-````
-```js react-live
-const onClick = () => {
-  alert("You opened me");
-};
-render(<button onClick={onClick}>Alohomora!</button>);
-```
-````
-
-### Adding content
-
-#### Adding a new blog post
-
-New blog posts will be shown on the index page (the three most recent ones) of this theme and on the blog overview page. They can be added by creating MDX files inside `content/posts`. General setup:
-
-1. Create a new folder inside `content/posts`
-1. Create a new `index.mdx` file, and add the frontmatter
-1. Add images to the created folder (from step 1) you want to reference in your blog post
-1. Reference an image as your `banner` in the frontmatter
-1. Write your content below the frontmatter
-1. Add a `slug` to the frontmatter to use a custom slug, e.g. `slug: "/my-slug"` (Optional)
-1. Use `defer` to opt-in into Deferred Static Generation (DSG) (optional)
-
-**Frontmatter reference:**
-
-```md
----
-title: Introduction to "Defence against the Dark Arts"
-date: 2019-11-07
-description: Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry.
-defer: false
-tags:
-  - Tutorial
-  - Dark Arts
-banner: ./defence-against-the-dark-arts.jpg
-canonicalUrl: https://random-blog-about-curses.com/curses-counter-curses-and-more
----
-```
-
-**The fields `description`, `banner`, `defer` and `canonicalUrl` are optional!** If no description is provided, an excerpt of the blog post will be used. If no banner is provided, the default `siteImage` (from `siteMetadata`) is used. If no `canonicalUrl` is provided, it will not be included in the header.
-
-The `date` field has to be written in the format `YYYY-MM-DD`!
-
-#### Adding a new page
-
-Additional pages can be created by placing MDX files inside `contents/pages`, e.g. an "About" or "Contact" page. You'll manually need to link to those pages, for example by adding them to the navigation (in `siteMetadata`). General instructions:
-
-1. Create a new folder inside `content/pages`
-1. Create a new `index.mdx` file, and add the frontmatter
-1. Write your content below the frontmatter
-1. Optionally add files/images to the folder you want to reference from the page
-1. Use `defer` to opt-in into Deferred Static Generation (DSG) (optional)
-
-**Frontmatter reference:**
-
-```md
----
-title: About
-slug: "/about"
-defer: false
----
-```
-
-### Changing the "Hero" text
-
-To edit the hero text ("Hi, I'm Lupin...), create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx` to edit the text.
-
-### Changing the "Projects" part
-
-To edit the projects part below "Latest posts", create a file at `src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx` to edit the contents.
-
-### Extending the footer of the post
-
-Inside the [`<Post />` component](https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/src/components/post.tsx) there's also a `<PostFooter />` component that you can shadow to display elements between the end of the post and the global footer. By default it returns `null`. Create a file at `src/@lekoarts/gatsby-theme-minimal-blog/components/post-footer.jsx` to edit this section. The `<PostFooter />` component receives the complete `post` prop that `<Post />` also receives.
-
-### Changing your fonts
-
-By default, the underlying theme and thus this starter uses "IBM Plex Sans" as its font. It's used throughout the site and set as a `font-family` on the `html` element.
-
-If you want to change your default font or add any additional fonts, you'll need to change two things:
-
-1. The configuration for `gatsby-omni-font-loader` => Responsible for loading the font CSS files
-1. The Theme UI config and its `fonts` key (see [Theme UI Typography Docs](https://theme-ui.com/theming#typography)) => Responsible for setting the `font-family` in the example
-
-After adjusting the configuration for `gatsby-omni-font-loader` you'll need to shadow the theme's Theme UI config and overwrite the `fonts` key. For the sake of this explanation it's assumed that you replaced "IBM Plex Sans" with "Roboto Mono".
-
-Create a file at `src/gatsby-plugin-theme-ui/index.js` with the following contents:
+By default, the theme's landing pages do not include a wrapping layout. This is to allow you customize the header, footer and other wrapping content to match the rest of your site.
+This starter shadows the theme's layout with the `src/gatsby-theme-landing-page/components/layout.js` file, which renders the `src/components/layout.js` file. Edit this file to customize the shared layout for all landing pages.
 
 ```js
-import { merge } from "theme-ui";
-import originalTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui/index";
-
-const theme = merge(originalTheme, {
-  fonts: {
-    body: `"Roboto Mono", monospace`,
-  },
-});
-
-export default theme;
+// example src/gatsby-theme-landing-page/components/layout.js
+export { default } from "../../components/custom-layout";
 ```
 
-As defined in the [Theme Specification](https://theme-ui.com/theme-spec#typography) `body` is the default body font family.
+## Customizing the typography and colors
 
-**Another example:** You didn't replace "IBM Plex Sans" but added "Roboto Mono" additionally since you want to use it for your headings.
+To customize the built-in components' typography, colors, and layout, edit the `src/gatsby-theme-landing-page/styles/variables.module.css` file.
 
-Then you'd not overwrite `body` but add a `heading` key:
-
-```js
-import { merge } from "theme-ui";
-import originalTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-theme-ui/index";
-
-const theme = merge(originalTheme, {
-  fonts: {
-    heading: `"Roboto Mono", monospace`,
-  },
-});
-
-export default theme;
+```css
+/* example src/gatsby-theme-landing-page/styles/variables.module.css */
+.root {
+  /* typography */
+  --font: "Inter", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --line-height: 1.5;
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 24px;
+  --font-size-5: 32px;
+  --font-size-6: 48px;
+  --letter-spacing-caps: 0.03em;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  /* colors */
+  --text-color: black;
+  --text-color-secondary: #555;
+  --background-color: white;
+  --link-color: #07c;
+  --link-hover-color: #05a;
+  --primary-color: #08d;
+  --secondary-color: #70c;
+  --button-color: white;
+  --button-background-color: #07c;
+  --button-hover-color: #05a;
+  --button-secondary-color: #07c;
+  --button-secondary-background-color: white;
+  --button-secondary-hover-color: rgb(215, 232, 250);
+  /* layout */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 32px;
+  --space-5: 64px;
+  --space-6: 128px;
+  --max-width: 1024px;
+  --max-width-narrow: 768px;
+  --border-radius: 4px;
+  /* shadows */
+  --box-shadow-raised: 0px 1px 2px rgba(46, 41, 51, 0.08), 0px 2px 4px rgba(71, 63, 79, 0.08);
+  --box-shadow-floating: 0px 2px 4px rgba(46, 41, 51, 0.08), 0px 4px 8px rgba(71, 63, 79, 0.16);
+}
 ```
 
-### Change your `static` folder
+If you decide to use a different webfont, be sure to also update `gatsby-browser.js` to load the font files you need and remove any you don't need.
 
-The `static` folder contains the icons, social media images and `robots.txt`. Don't forget to change these files, too! You can use [Real Favicon Generator](https://realfavicongenerator.net/) to generate the image files inside `static`.
+## Customizing section components
 
-## 🤔 Questions or problems?
+To customize a landing page section component, create a file in `src/gatsby-theme-landing-page/sections/` with the same name used in the theme. This will shadow the built-in component to completely override it.
 
-If you have general questions or need help with Gatsby, please go to one of the [support platforms](https://www.gatsbyjs.com/contributing/community/#where-to-get-support) mentioned in Gatsby's documentation. If you have a specific question about this project, you can head to the [GitHub Discussions](https://github.com/LekoArts/gatsby-themes/discussions) of the repository.
+As an example to get you started, see `src/gatsby-theme-landing-page/sections/call-to-action.js`, which is a customized version of the CallToAction component built into the theme.
+Feel free to edit this component directly or follow this pattern to customize other section components.
+
+## Adding new section components
+
+To add more components and extend the functionality, follow these steps:
+
+1. Edit the `src/gatsby-theme-landing-page/sections/index.js` file
+   and add named exports for the additional components you'd like to use. In the below example, we add a new hero component called SuperHero
+
+   ```js
+   // src/gatsby-theme-landing-page/sections/index.js
+   // This file shadows gatsby-theme-landing-page's sections index.
+   export { default as Hero } from "gatsby-theme-landing-page/src/sections/hero";
+   export { default as Features } from "gatsby-theme-landing-page/src/sections/features";
+   export { default as Copy } from "gatsby-theme-landing-page/src/sections/copy";
+   export { default as CallToAction } from "gatsby-theme-landing-page/src/sections/call-to-action";
+   export { default as Benefits } from "gatsby-theme-landing-page/src/sections/benefits";
+   export { default as Testimonial } from "gatsby-theme-landing-page/src/sections/testimonial";
+
+   // This is a new section component that extends the functionality of the theme.
+   export { default as SuperHero } from "../../components/super-hero";
+   ```
+
+2. Create your component in `src/components`
+
+   ```js
+   // src/components/super-hero.js
+   export default function SuperHero({ heading, secondaryHeading, content }) {
+     return (
+       // {Component code}
+     );
+   }
+   ```
+
+3. Update your Contentful space's content model to reflect these changes by ensuring the LandingPageSection's _Component_ field validation includes the new component name.
+
+   ![contentful component validation](https://user-images.githubusercontent.com/1227297/145876531-b0658f9c-b6ed-428a-be99-1cd29029f0a6.png)
+
+This starter includes an example section component in `src/components/super-hero.js`. Feel free to edit, rename, or use this as an reference when creating other custom section components.
+
+### GraphQL page query
+
+Each page in the theme uses the following query for data. Use this as a reference for the props passed into each section component.
+
+```graphql
+query ($id: String!) {
+  page: contentfulLandingPage(id: { eq: $id }) {
+    title
+    description
+    image {
+      gatsbyImageData(layout: CONSTRAINED)
+    }
+    sections {
+      id
+      component
+      heading
+      secondaryHeading
+      content {
+        id
+        primaryText {
+          childMarkdownRemark {
+            html
+          }
+        }
+        secondaryText {
+          childMarkdownRemark {
+            html
+          }
+        }
+        image {
+          gatsbyImageData(layout: CONSTRAINED)
+        }
+        links {
+          id
+          href
+          text
+        }
+      }
+    }
+  }
+}
+```
+
+### Schema Customization API
+
+To prevent errors from occuring when changes are made to the Contentful content model, this starter includes GraphQL type definitions in its [`gatsby-node.js`](gatsby-node.js) file.
+If you decide to make changes to your content model, be sure to update the type definitions in this file, otherwise the starter might not be able to query new or renamed fields.
+
+To read more about customizing, see the theme's [README.md][theme readme].
 
 ## 🎓 Learning Gatsby
 
-Looking for more guidance? Full documentation for Gatsby lives [on Gatsby's website](https://www.gatsbyjs.com/).
+Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
 
-### Themes
+- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).**
 
-To learn more about Gatsby themes specifically, I recommend checking out the [theme docs](https://www.gatsbyjs.com/docs/themes/).
+## 💫 Deploy
 
-### General
+[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
 
-- **For most developers, I recommend starting with the [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
 
-- **To dive straight into code samples, head [to Gatsby's documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _How-to Guides_ and _Reference_ items in the primary navigation.
-
-## 🌟 Supporting me
-
-Thanks for using this project! I'm always interested in seeing what people do with my projects, so don't hesitate to tag me on [Twitter](https://twitter.com/lekoarts_de) and share the project with me.
-
-Please star this project, share it on Social Media or consider supporting me on [Patreon](https://www.patreon.com/lekoarts) or [GitHub Sponsor](https://github.com/sponsors/LekoArts)!
+[theme readme]: gatsby-theme-landing-page/README.md
